@@ -3,6 +3,25 @@ a client side richtext  xss filter  based on jquery
 
 
 ```{typescript}
+export function en(str) {
+    str = (str || "").toString();
+    const character = {
+        '<': '&lt;',
+        '>': '&gt;',
+        '&': '&amp;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return function () {
+        return str.replace(/[<>&"']/g,
+            function (c) {
+                return character[c];
+            }
+        );
+    }();
+}
+
+
 export function filterHtml(s, whiteTags = ["var","p", "div", "span", "img", "a", "strong", "em", "ol", "li", "i", "pre", "br", "sub", "sup", "ul", "section", "h1", "h2", "h3", "h4", "h5", "h6", "b", "u", "s", "del", "strong", "big", "small", "strike", "kbd", "code", "address", "cite", "dl", "dd", "dt", "caption", "font", "hr", "nobr", "center", "table","thead", "tfoot","tr", "td", "tbody", "th", "blockquote"]) {
     let $$ = window["jQuery"];
     let vDom = $$("<section>" + s + "</section>");
