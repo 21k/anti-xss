@@ -27,7 +27,7 @@ tool.en = function(str) {
  * @param spliter optional String ' '
  */
 tool.secHtml = function(htmlStr, whiteTags, spliter) {
-    var rootTagName = Math.random().toString(36).replace('0.', 'byted');
+    var rootTagName = Math.random().toString(36).replace('0.', 'random');
     var dom = (new DOMParser)
         .parseFromString('<' + rootTagName + '>' + (htmlStr || '') + '</' + rootTagName + '>', 'text/html')
         .getElementsByTagName(rootTagName)[0];
