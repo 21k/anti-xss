@@ -4,7 +4,7 @@ a client side richtext  xss filter  based on DOMParser
 
 1、parse string to dom tree
 ```javascript
-    var rootTagName = Math.random().toString(36).replace('0.', 'byted');
+    var rootTagName = Math.random().toString(36).replace('0.', 'random');
     var dom = (new DOMParser)
         .parseFromString('<' + rootTagName + '>' + (htmlStr || '') + '</' + rootTagName + '>', 'text/html')
         .getElementsByTagName(rootTagName)[0];
